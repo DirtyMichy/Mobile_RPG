@@ -2,20 +2,21 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour {
-
-	public int health = 100;
+public class Enemy : Unit
+{
 	public TextMesh text_EnemyHP;
+	public GameObject playerRef;
 
 	// Use this for initialization
-	void Start () {
-		text_EnemyHP.text = "Hitpoints: " + GetComponent<Enemy> ().health;
+	void Awake () {
+		playerRef = GameObject.Find("Canvas");
+		text_EnemyHP.text = "Hitpoints: " + GetComponent<Enemy> ().currenthealth;
 	}
 	
 	// Update is called once per frame
 	void Update () {		
-		text_EnemyHP.text = "Hitpoints: " + GetComponent<Enemy>().health;
-		if (health <= 0) {
+	//	text_EnemyHP.text = "Hitpoints: " + GetComponent<Enemy>().health;
+		if (currenthealth <= 0) {
 			Destroy (gameObject);
 			Debug.Log (GameObject.FindGameObjectsWithTag ("Enemy").Length);
 		}

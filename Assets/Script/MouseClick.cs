@@ -5,13 +5,11 @@ public class MouseClick : MonoBehaviour {
 
 	public UI_Battle UI_BattleScript;
 	public GameObject menu;
-	GameObject chosen;
 
 	// Use this for initialization
 	void Start () {
 		menu = GameObject.Find ("Canvas");
-		UI_BattleScript = menu.GetComponent<UI_Battle> ();
-		chosen = transform.root.gameObject;
+		//UI_BattleScript = menu.GetComponent<UI_Battle> ();
 
         Debug.Log ("1");
 	}
@@ -27,7 +25,7 @@ public class MouseClick : MonoBehaviour {
 
 		//UI_Battle.enemy = GetComponent<Enemy> ();
 
-		UI_BattleScript.GetComponent <UI_Battle> ().SetEnemy ( chosen);
+		//UI_BattleScript.GetComponent <UI_Battle> ().SetEnemy(transform.root.gameObject);
 
 		//rigidbody.AddForce(-transform.forward * 500f);
 		//rigidbody.useGravity = true;

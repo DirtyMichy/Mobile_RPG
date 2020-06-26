@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player : MonoBehaviour {
-
-	public static int currenthealth = 100, maxhealth = 100, strength, dexterity, intelligence, attributePoints = 40;
-
+public class Player : Unit 
+{
 	// Use this for initialization
 	void Start () {
 	

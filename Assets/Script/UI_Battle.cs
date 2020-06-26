@@ -8,7 +8,7 @@ public class UI_Battle : MonoBehaviour {
 	public Button buttonDMG, buttonRNGDMG;
 	public Text text_PlayerHP;
 	public GameObject[] enemies;
-
+	/*
 	// Use this for initialization
 	void Start () {
 		Player.currenthealth = Player.maxhealth;
@@ -57,7 +57,7 @@ public class UI_Battle : MonoBehaviour {
 			}
 		}
 	}
-
+	*/
 	public void SetEnemy(GameObject chosen){
 		enemy = chosen;
 	}

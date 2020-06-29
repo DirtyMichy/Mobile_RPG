@@ -2,23 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Manager : MonoBehaviour
+public class Spell : MonoBehaviour
 {
-    public static Manager current;
+    public string spellName = "Default";
+
+    public void SingleTarget() 
+    {
+        
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        if (current == null)
-            current = this;
-        else
-            Destroy(gameObject);
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 }

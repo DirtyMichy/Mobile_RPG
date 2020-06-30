@@ -5,8 +5,10 @@ using UnityEngine;
 public class Manager : MonoBehaviour
 {
     public static Manager current;
+    public List<GameObject> combatUnits = new List<GameObject>();
+    public GameObject currentObjectsTurn;
+    public int turn = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
         if (current == null)
@@ -14,9 +16,41 @@ public class Manager : MonoBehaviour
         else
             Destroy(gameObject);
 
+        InitCombat();
     }
 
-    // Update is called once per frame
+    public void InitCombat()
+    {
+        foreach (var item in GameObject.FindGameObjectsWithTag("CombatUnit"))
+        {
+            combatUnits.Add(item);
+        }
+
+        combatUnits[turn % combatUnits.Count].GetComponent<UnitObject>().TakeTurn();
+    }
+
+    public void RemoveDeadUnit(GameObject d)
+    {
+        combatUnits.Remove(d);
+
+        if (combatUnits.Count == 1)
+            Debug.Log("Combat endet at turn: " + turn);
+    }
+
+    public void NextTurn()
+    {
+        if (combatUnits.Count > 1)
+        {
+            turn++;
+
+            currentObjectsTurn = combatUnits[turn % combatUnits.Count];
+
+            combatUnits[turn % combatUnits.Count].GetComponent<UnitObject>().TakeTurn();
+
+            Debug.Log("Turn: " + turn + " Unit: " + combatUnits[turn % combatUnits.Count].name);
+        }
+    }
+
     void Update()
     {
 

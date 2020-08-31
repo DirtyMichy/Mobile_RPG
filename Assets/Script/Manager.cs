@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class Manager : MonoBehaviour
@@ -39,6 +40,13 @@ public class Manager : MonoBehaviour
 
     public void NextTurn()
     {
+        StartCoroutine(TurnDelay());
+    }
+
+    IEnumerator TurnDelay()
+    {
+        yield return new WaitForSeconds(1f);
+
         if (combatUnits.Count > 1)
         {
             turn++;

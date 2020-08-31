@@ -21,7 +21,10 @@ public class UnitObject : MonoBehaviour
 
     private void Start()
     {
-        healthBar = Instantiate(healthBarPrefab, new Vector3(transform.position.x - 1f, transform.position.y + 2f, transform.position.z), transform.rotation);
+        playerRef = GameObject.Find("Player");
+        SpellContainerScript = GetComponent<SpellManager>();
+
+           healthBar = Instantiate(healthBarPrefab, new Vector3(transform.position.x - 1f, transform.position.y + 2f, transform.position.z), transform.rotation);
         healthBar.transform.parent = transform;
 
         UpdateHealthBar();
@@ -111,6 +114,7 @@ public class UnitObject : MonoBehaviour
             {
                 //We are casting on an enemy here
                 playerRef.GetComponent<UnitObject>().SpellContainerScript.CastSpell(gameObject, strength, dexterity, intelligence, chosenSpell);
+                Debug.Log("Player casts a spell on an enemy.");
             }
 
             Manager.current.NextTurn();

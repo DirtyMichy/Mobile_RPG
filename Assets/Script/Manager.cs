@@ -40,13 +40,6 @@ public class Manager : MonoBehaviour
 
     public void NextTurn()
     {
-        StartCoroutine(TurnDelay());
-    }
-
-    IEnumerator TurnDelay()
-    {
-        yield return new WaitForSeconds(1f);
-
         if (combatUnits.Count > 1)
         {
             turn++;
@@ -57,6 +50,15 @@ public class Manager : MonoBehaviour
 
             Debug.Log("Turn: " + turn + " Unit: " + combatUnits[turn % combatUnits.Count].name);
         }
+
+        //StartCoroutine(TurnDelay());
+    }
+
+    IEnumerator TurnDelay()
+    {
+        yield return new WaitForSeconds(1f);
+
+
     }
 
     void Update()

@@ -16,12 +16,19 @@ public class UnitObject : MonoBehaviour
     [SerializeField]
     private GameObject healthBarPrefab = default;
     private GameObject healthBar;
+    [SerializeField]
+    private GameObject healthDamageBar;
 
-    void Start()
+    private void Start()
     {
-        SpellContainerScript = GetComponent<SpellManager>();
+        healthBar = Instantiate(healthBarPrefab, new Vector3(transform.position.x - 1f, transform.position.y + 2f, transform.position.z), transform.rotation);
+        healthBar.transform.parent = transform;
 
-        playerRef = GameObject.Find("Player");
+        UpdateHealthBar();
+    }
+    private void Update()
+    {
+        healthDamageBar.transform.localScale = new Vector3(Mathf.Lerp(healthDamageBar.transform.localScale.x, healthBar.transform.localScale.x, Time.time * 0.01f), healthDamageBar.transform.localScale.y, healthDamageBar.transform.localScale.z);
     }
 
     public void CheckHealthStatus()
@@ -46,7 +53,7 @@ public class UnitObject : MonoBehaviour
     public void UpdateHealthBar()
     {
         float x = 4f * currentHealth / maxHealth;
-        //healthBar.transform.localScale = new Vector3(x, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
+        healthBar.transform.GetChild(0).transform.localScale = new Vector3(x, healthBar.transform.localScale.y, healthBar.transform.localScale.z);
     }
 
     public void ApplyDamage(int amount)

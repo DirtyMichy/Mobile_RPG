@@ -3,7 +3,16 @@ guid: 1b16320818416bb4b87252f0ca807ebc
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - targetedUnit: {instanceID: 0}
+  - playerRef: {instanceID: 0}
+  - SpellContainerScript: {instanceID: 0}
+  - spawn: {instanceID: 0}
+  - hurt: {instanceID: 0}
+  - die: {instanceID: 0}
+  - healthBarPrefab: {fileID: 5573690977599823109, guid: 0f15b063e1b7b9e469756cc6ae7cab84,
+      type: 3}
+  - healthDamageBar: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

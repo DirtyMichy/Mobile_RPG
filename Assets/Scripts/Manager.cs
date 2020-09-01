@@ -7,7 +7,7 @@ public class Manager : MonoBehaviour
 {
     public static Manager current;
     public List<GameObject> combatUnits = new List<GameObject>();
-    public GameObject currentObjectsTurn;
+    public GameObject currentObjectsTurn, turnArrow;
     public int turn = 0;
 
     void Start()
@@ -28,6 +28,10 @@ public class Manager : MonoBehaviour
         }
 
         combatUnits[turn % combatUnits.Count].GetComponent<UnitObject>().TakeTurn();
+
+        currentObjectsTurn = combatUnits[turn % combatUnits.Count];
+
+        turnArrow.transform.position = new Vector3(currentObjectsTurn.transform.position.x, currentObjectsTurn.transform.position.y + 3f, 0f);
     }
 
     public void RemoveDeadUnit(GameObject d)
@@ -46,6 +50,8 @@ public class Manager : MonoBehaviour
 
             currentObjectsTurn = combatUnits[turn % combatUnits.Count];
 
+            turnArrow.transform.position = new Vector3(currentObjectsTurn.transform.position.x, currentObjectsTurn.transform.position.y + 3f, 0f);
+
             combatUnits[turn % combatUnits.Count].GetComponent<UnitObject>().TakeTurn();
 
             Debug.Log("Turn: " + turn + " Unit: " + combatUnits[turn % combatUnits.Count].name);
@@ -57,8 +63,6 @@ public class Manager : MonoBehaviour
     IEnumerator TurnDelay()
     {
         yield return new WaitForSeconds(1f);
-
-
     }
 
     void Update()

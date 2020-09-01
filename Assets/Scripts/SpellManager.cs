@@ -9,7 +9,7 @@ public class SpellManager : MonoBehaviour
     public GameObject target;
     int strength, dexterity, intelligence;
 
-    public void CastSpell (GameObject t, int s, int d, int i, string cs)
+    public void CastSpell(GameObject t, int s, int d, int i, string cs)
     {
         strength = s;
         dexterity = d;

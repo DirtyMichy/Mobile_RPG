@@ -55,6 +55,11 @@ public class Manager : MonoBehaviour
             combatUnits[turn % combatUnits.Count].GetComponent<UnitObject>().TakeTurn();
 
             Debug.Log("Turn: " + turn + " Unit: " + combatUnits[turn % combatUnits.Count].name);
+
+        }
+        else
+        {
+            Debug.Log("WIN");
         }
 
         //StartCoroutine(TurnDelay());

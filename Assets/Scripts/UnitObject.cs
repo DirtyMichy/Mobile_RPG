@@ -52,6 +52,8 @@ public class UnitObject : MonoBehaviour
                 GetComponent<AudioSource>().clip = hurt;
                 GetComponent<AudioSource>().Play();
             }
+
+        Manager.current.NextTurn();
     }
 
     public void UpdateHealthBar()
@@ -74,6 +76,7 @@ public class UnitObject : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
 
         UpdateHealthBar();
+        CheckHealthStatus();
     }
 
     public void Die()
@@ -95,7 +98,6 @@ public class UnitObject : MonoBehaviour
     public void AITesting()
     {
         SpellContainerScript.CastSpell(playerRef, strength, dexterity, intelligence, chosenSpell);
-        Manager.current.NextTurn();
     }
 
     //Will be split in Player.cs and Enemy.cs in future
@@ -117,8 +119,6 @@ public class UnitObject : MonoBehaviour
                 playerRef.GetComponent<UnitObject>().SpellContainerScript.CastSpell(gameObject, strength, dexterity, intelligence, chosenSpell);
                 Debug.Log("Player casts a spell on an enemy.");
             }
-
-            Manager.current.NextTurn();
         }
     }
 }
